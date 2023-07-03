@@ -78,6 +78,9 @@ If no filter is specified, display all the hotels as before.
             <thead>
                 <tr>
                     <th scope="col">
+                        #
+                    </th>
+                    <th scope="col">
                         Name
                     </th>
                     <th scope="col">
@@ -109,13 +112,17 @@ If no filter is specified, display all the hotels as before.
                             <?php echo $hotel['description']; ?>
                         </td>
                         <td>
-                            <?php echo $hotel['parking']; ?>
+                            <?php if ($hotel['parking'] == true) {
+                                echo "Yes, parking available";
+                            } elseif ($hotel['parking'] == false) {
+                                echo "No, parking not available";
+                            } ?>
                         </td>
                         <td>
-                            <?php echo $hotel['vote']; ?>
+                            <?php echo $hotel['vote'] . "/5"; ?>
                         </td>
                         <td>
-                            <?php echo $hotel['distance_to_center']; ?>
+                            <?php echo $hotel['distance_to_center'] . " km"; ?>
                         </td>
                     </tr>
                     <?php $counter++; ?>
